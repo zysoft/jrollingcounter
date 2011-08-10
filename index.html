@@ -1,76 +1,300 @@
 <!DOCTYPE html>
 <html>
-<head>
-<body>
-  <meta charset='utf-8'>
-
-  <title>zysoft/jrollingcounter @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #59188c;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #a6e773; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #a6e773; }
-    h3 { text-align: center; color: #a6e773; }
-    a { color: #a6e773; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
-
-<body>
-  <a href="http://github.com/zysoft/jrollingcounter"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/zysoft/jrollingcounter/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/zysoft/jrollingcounter/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/zysoft/jrollingcounter">jQuery Rolling Counter</a>
-      <span class="small">by <a href="http://github.com/zysoft">zysoft</a></span></h1>
-
-    <div class="description">
-      This plugin is a simple tool that allows you to make odometer-like counter which spins and stops on desired digit.
-    </div>
-
-    <h2>Authors</h2>
-<p>Yuriy Zisin<br/><br/>      </p>
-
-
-    <h2>Download</h2>
+    <head>
+        <!-- PAGE STYLES -->
+        <style type="text/css">
+            body,html {
+                background-color: #DDDDDD;
+                margin:0;
+                padding: 0;
+                font-family: Arial;
+                font-size: 16px;
+            }
+            .download { float: right; }
+            p {
+                padding: 0;
+                margin: 0;
+            }
+            a, a:visited, a:hover {
+                color: #880000;
+            }
+            a.spin_action {
+                font-size: 10px;
+            }
+            .cleaner {
+                float:none;
+                clear:both;
+            }
+            #header {
+                background-color: #880000;
+                font-size: 36px;
+                font-weight: bold;
+                text-align: center;
+                color: white;
+                
+            }
+            #subheader {
+                background-color: #AA0000;
+                font-size: 22px;
+                font-weight: bold;
+                text-align: center;
+                color: white;
+                
+            }
+            #footer {
+                background-color: #AA0000;
+                font-size: 12px;
+                text-align: center;
+                color: white;
+            }
+            
+            #body {
+                padding: 10px;
+            }
+        </style>
+        <!-- COUNTER STYLES -->
+        <style type="text/css">
+            .counter {
+                width: 71px;
+                height: 96px;
+                overflow: hidden;
+            }
+            .counter .bg {
+                background: url('bg.png') no-repeat;
+                width: 71px;
+                height: 96px;
+                position: absolute;
+                z-index: 100;
+            }
+        </style>
+        <!-- script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://balupton.github.com/jquery-syntaxhighlighter/scripts/jquery.syntaxhighlighter.min.js"></script>
+        <script type="text/javascript" src="../src/jrollingcounter-0.0.1.js"></script>
+        <script type="text/javascript">
+            $('#runExample1').live('click', function(){
+                $('#example1').spinCounter();
+                return false;
+            });
+            $('#runExample2').live('click', function() {
+                $('#example2').spinCounter({
+                    minDigitSpinDelay: 100,
+                    maxDigitSpinDelay: 1000,
+                    spinTime: 4000,
+                    stopDigit: 8,
+                    startDigit:5
+                });
+                return false;
+            });
+            $('#runExample3').live('click', function() {
+                $('#example3d1').spinCounter({spinTime: 4000, stopDigit: 1});
+                $('#example3d2').spinCounter({spinTime: 4200, stopDigit: 9});
+                $('#example3d3').spinCounter({spinTime: 4400, stopDigit: 2});
+                $('#example3d4').spinCounter({spinTime: 4600, stopDigit: 8});
+                $('#example3d5').spinCounter({spinTime: 4800, stopDigit: 3});
+                $('#example3d6').spinCounter({spinTime: 5000, stopDigit: 7});
+                return false;
+            });
+            $.SyntaxHighlighter.init();
+        </script>
+    </head>
+    <body>
+        <a href="http://github.com/zysoft/jrollingcounter"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>        
+        <div id="header">jQuery Rolling Counter</div>
+        <div id="subheader">Usage Examples</div>
+        <div id="body">
+            <h1>Welcome</h1>
+            <p>Thank you for checking out jQuery Rolling Counter! Hope you enjoy it!</p>
+            <p>
+                This plugin is a simple tool that allows you to make odometer-like counter which spins and stops on desired digit.
+            </p>
+            <h1>
+                Getting started
+            </h1>
+            <p>First you need to include jQuery library. Let's do it via Google CDN.</p>
+            <pre class="highlight">
+                &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"&gt;&lt;/script&gt;
+            </pre>
+            <p>Then include plugin file</p>
+            <pre class="highlight">
+                &lt;script type="text/javascript" src="../src/jrollingcounter-0.0.1.js"&gt;&lt;/script&gt;
+            </pre>
+            <p>The next step is HTML/CSS to make your counter look and feel.</p>
+            <p>In this example we use this markup:</p>
+            <pre class="highlight">
+                &lt;div class="counter" id="example1"&gt;
+                    &lt;div class="bg">&lt;/div&gt;
+                    &lt;img src="digit.png"/&gt;
+                &lt;/div&gt;
+            </pre>
+            <p>The CSS used is as follows:</p>
+            <pre class="language-css">
+            .counter {
+                width: 71px;
+                height: 96px;
+                overflow: hidden;
+            }
+            .counter .bg {
+                background: url('bg.png') no-repeat;
+                width: 71px;
+                height: 96px;
+                position: absolute;
+                z-index: 100;
+            }
+            </pre>
+            
+            <p>The markup above gives this:</p>
+            <p>&nbsp;</p>
+            <div style="height: 240px;overflow: hidden;width:71px;border:1px dashed black;float:left;"><img src="digit.png"/></div>
+            <div style="float:left;font-size:80px;padding: 0 10px;">+</div>
+            <div class="counter" style="float:left;"><div class="bg"></div></div>
+            <div style="float:left;font-size:80px;padding: 0 10px;">=</div>
+            <div class="counter" style="float:left;">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <div class="cleaner"></div>
+            <p>&nbsp;</p>
+            <p>As you can see, the concept is to animate the long image through the "window" made up by styled div. It's a spin illusion :)</p>
+            <p>What we really do is simply animate the margin to make illusion of spinning digits. Of course that's not the only feature plugin does.</p>
+            <p>&nbsp;</p>
+            <p>When you are ready to start your counter, you can simply call:</p>
+            <pre class="highlight">
+                &lt;script type="text/javascript"&gt;
+                    $('#example1').spinCounter();
+                &lt;/script&gt;
+            </pre>
+            <h1>The complete example</h1>
+            <p>Let's see at the complete example:</p>
+            <pre class="highlight">
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                    &lt;title&gt;jQuery Rolling Counter example&lt;/&gt;
+                    &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"&gt;&lt;/script&gt;
+                    &lt;script type="text/javascript" src="../src/jrollingcounter-0.0.1.js"&gt;&lt;/script&gt;
+                    &lt;script type="text/javascript"&gt;
+                        //Attach onclick handler to a link
+                        $('#runExample').live('click', function(){
+                            $('#example1').spinCounter();
+                            return false;
+                        });
+                    &lt;/script&gt;
+                    &lt;style type="text/css"&gt;
+                        .counter {
+                            width: 71px;
+                            height: 96px;
+                            overflow: hidden;
+                        }
+                        .counter .bg {
+                            background: url('bg.png') no-repeat;
+                            width: 71px;
+                            height: 96px;
+                            position: absolute;
+                            z-index: 100;
+                        }
+                    &lt;/style&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;div class="counter" id="example1"&gt;
+                        &lt;div class="bg">&lt;/div&gt;
+                        &lt;img src="digit.png"/&gt;
+                    &lt;/div&gt;
+                    &lt;a id="runExample" href="#"&gt;Start spinning&lt;a&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </pre>
+            <h1>Try it yourself</h1>
+            <div class="counter" id="example1">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <a href="#" id="runExample1" class="spin_action">Start spinning</a>
+            <h1>Customization</h1>
+            <p>Essentially the call to plugin can be made according to the following specification:</p>
+            <pre class="language-javascript">
+                .spinCounter([options],[complete])
+            </pre>
+            <p>The parameters are:</p>
+            <ul>
+                <li><strong>options</strong> - spinning options, object
+                    <ul>
+                        <li><strong>minDigitSpinDelay</strong> - minimum time to spin 1 digit (msec). Default: 200</li>
+                        <li><strong>maxDigitSpinDelay</strong> - maximum time to spin 1 digit (msec). Default: 800</li>
+                        <li><strong>spinTime</strong> - time the counter should go from <i>maxDigitSpinDelay</i> to <i>minDigitSpinDelay</i> (msec). Default: 5000</li>
+                        <li><strong>startDigit</strong> - digit to start spin from (0-9). Default: 0</li>
+                        <li><strong>stopDigit</strong> - digit to stop spin at (0-9). Default: 0</li>
+                    </ul>
+                </li>
+                <li><strong>complete</strong> - callback to execute when counter stops, function</li>
+            </ul>
+            <p>The example call is as following:</p>
+            <pre class="language-javascript">
+                $('#example2').spinCounter({
+                    minDigitSpinDelay: 100,
+                    maxDigitSpinDelay: 1000,
+                    spinTime: 4000,
+                    stopDigit: 8,
+                    startDigit:5
+                });
+            </pre>
+            <p>&nbsp;</p>
+            <p><strong>Try it yourself</strong></p>
+            <div class="counter" id="example2">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <a href="#" id="runExample2" class="spin_action">Start spinning</a>
+            <h1>Multi-digit counter</h1>
+            <p>There's no much sense of one digit spinning around. Usually you need to display sum number in odometer form.</p>
+            <p>It's easy with jQuery Rolling Counter!</p>
+            <p>Simply put several instances of counter and tune them up!</p>
+            <p>The next example shows how to set the number 192837</p>
+            <pre class="language-javascript">
+                $('#example3d1').spinCounter({spinTime: 4000, stopDigit: 1});
+                $('#example3d2').spinCounter({spinTime: 4200, stopDigit: 9});
+                $('#example3d3').spinCounter({spinTime: 4400, stopDigit: 2});
+                $('#example3d4').spinCounter({spinTime: 4600, stopDigit: 8});
+                $('#example3d5').spinCounter({spinTime: 4800, stopDigit: 3});
+                $('#example3d6').spinCounter({spinTime: 5000, stopDigit: 7});
+            </pre>
+            <p><strong>Try it yourself</strong></p>
+            <div class="counter" id="example3d1" style="float:left;">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <div class="counter" id="example3d2" style="float:left;">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <div class="counter" id="example3d3" style="float:left;">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <div class="counter" id="example3d4" style="float:left;">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <div class="counter" id="example3d5" style="float:left;">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <div class="counter" id="example3d6" style="float:left;">
+                <div class="bg"></div>
+                <img src="digit.png"/>
+            </div>
+            <div class="cleaner"></div>
+            <a href="#" id="runExample3" class="spin_action">Start spinning</a>
+        </div>
+        <h1>Download</h1>
     <p>
       You can download this project in either
-      <a href="http://github.com/zysoft/jrollingcounter/zipball/master">zip</a> or
-      <a href="http://github.com/zysoft/jrollingcounter/tarball/master">tar</a> formats.
+      <a href="http://github.com/zysoft/jrollingcounter/zipball/master"  style="font-size:20px;">ZIP</a> or
+      <a href="http://github.com/zysoft/jrollingcounter/tarball/master" style="font-size:20px;">TAR</a> formats.
     </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/zysoft/jrollingcounter</pre>
-    </p>
+      <p>You can also clone the project with <a href="http://git-scm.com">Git</a> by running:</p>
+      <pre class="highlight">$ git clone git://github.com/zysoft/jrollingcounter</pre>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/zysoft/jrollingcounter">zysoft/jrollingcounter</a>
-    </div>
-
-  </div>
-
-  
-</body>
+      <div id="footer">&copy; Yuriy Zisin. Distributed under GNU Lesser General Public License</div>
+    </body>
 </html>
